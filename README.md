@@ -1,7 +1,7 @@
-Fingerprinting Stacks
+StackSpy
 ---------------------
 
-This is the plugin identifies what technologies comprise a web
+This plugin identifies what technologies comprise a web
 app's stack. 
 
 
