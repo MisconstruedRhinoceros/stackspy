@@ -4,7 +4,8 @@ var cheerio = require('cheerio');
  * Result object
  */
 var result = {
-  react: false,
+  name: 'react',
+  found: false,
   version: null,
   src: null,
 }
@@ -21,7 +22,7 @@ module.exports = function(response) {
        * to false
        */
       if(~$scripts[i].attribs.src.indexOf('react')) {
-        result.react = true;
+        result.found = true;
         console.log('React: ', $scripts[i].attribs.src);
       }
     } else {
