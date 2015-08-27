@@ -31,12 +31,10 @@ module.exports = function(response) {
   var results = [];
 
   for(var key in guesses) {
-    guesses[key](response);
-    //var result = guesses[key](response);
-    //console.log(result);
-    //if(result[guesses[key]] === true) {
-    //  results.push(result);
-    //}
+    var result = guesses[key](response);
+    if(result[guesses[key]] === true) {
+      results.push(result);
+    }
   }
 
   return results;
