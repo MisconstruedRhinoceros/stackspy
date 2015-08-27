@@ -1,5 +1,6 @@
 StackSpy
 ---------------------
+BETA STATUS -- NOT ALL MODULES WORK
 
 This plugin identifies what technologies comprise a web
 app's stack. 
