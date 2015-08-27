@@ -18,18 +18,24 @@ var testSites = ['https://www.airbnb.com',
                  'https://www.reddit.com',
                  'https://www.squarespace.com'
                 ];
+var main = function(url) {
 
-for(var i = 0; i < testSites.length; i++) {
-  request(testSites[i], function(err, response, body) {
-    if(!err) {
-      serverID(response); 
-      clientID(body);
-    } else {
-      console.log(err);
-    }
-    console.log('\n');
-  });
+  var client_results = [];
+  var server_results = [];
+
+  for(var i = 0; i < testSites.length; i++) {
+    request(testSites[i], function(err, response, body) {
+      if(!err) {
+        server_results.push(serverID(response)); 
+        client_results.push(clientID(body));
+      } else {
+        console.log(err);
+      }
+    });
+  }
 }
 
-
-
+if(require.main === module) {
+  main();
+}
+module.exports = main;
