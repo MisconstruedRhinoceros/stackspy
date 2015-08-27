@@ -27,8 +27,11 @@ for(var i = 0; i < modules.length; i++) {
  * In the future, there will be more logic
  */
 module.exports = function(response) {
+  var results = [];
 
   for(var key in guesses) {
-    guesses[key](response);
+    results.push(guesses[key](response));
   }
+
+  return results;
 }
