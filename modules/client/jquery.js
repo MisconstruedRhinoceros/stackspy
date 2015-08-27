@@ -4,7 +4,8 @@ var cheerio = require('cheerio');
  * Result object
  */
 var result = {
-  jquery: false,
+  name: 'jquery',
+  found: false,
   version: null,
   src: null,
 }
@@ -21,7 +22,7 @@ module.exports = function(response) {
        * tilde converts -1 to false
        */
       if(~$scripts[i].attribs.src.indexOf('jquery')) {
-        result.jquery = true;
+        result.found = true;
         console.log('jQuery: ', $scripts[i].attribs.src);
       }
     } else {
