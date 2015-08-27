@@ -4,6 +4,7 @@ var clientID = require('./client');
 
 var main = function(url) {
 
+  console.log("Spying on", url, "...");
   var client_results = [];
   var server_results = [];
 
@@ -18,6 +19,10 @@ var main = function(url) {
 }
 
 if(require.main === module) {
+  if(process.argv.length < 3) {
+    console.log("ERROR: You must supply a url");
+    return;
+  }
   main(process.argv[2]);
 }
 module.exports = main;
