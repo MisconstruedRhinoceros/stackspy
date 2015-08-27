@@ -32,7 +32,7 @@ module.exports = function(response) {
 
   for(var key in guesses) {
     var result = guesses[key](response);
-    if(result[guesses[key]] === true) {
+    if(result.found === true) {
       results.push(result);
     }
   }
