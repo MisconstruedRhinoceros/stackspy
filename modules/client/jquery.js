@@ -28,4 +28,6 @@ module.exports = function(response) {
       //Parse inline script
     }
   }
+
+  return result;
 }
