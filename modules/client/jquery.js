@@ -23,6 +23,7 @@ module.exports = function(response) {
        */
       if(~$scripts[i].attribs.src.indexOf('jquery')) {
         result.found = true;
+        result.src = result.src || $scripts[i].attribs.src;
         console.log('jQuery: ', $scripts[i].attribs.src);
       }
     } else {
