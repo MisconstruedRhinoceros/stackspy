@@ -1,6 +1,6 @@
 {
-  "name": "StackSpy",
-  "version": "0.0.2",
+  "name": "stackspy",
+  "version": "0.1.0",
   "description": "",
   "main": "stackspy.js",
   "scripts": {
