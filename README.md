@@ -1,8 +1,19 @@
 StackSpy
 ---------------------
+BETA STATUS -- NOT ALL MODULES WORK
 
 This plugin identifies what technologies comprise a web
 app's stack. 
+
+##Use
+StackSpy can be required like any other node module, and it returns an object
+like the example in the design section.
+
+StackSpy can also be used as a command line tool by passing in a url:
+
+```
+  node stackspy.js http://example.com
+```
 
 
 
@@ -21,31 +32,27 @@ change nothing.
 
 ex: 
 ```
-  node app.js url1
-
-  /** returned */
-  { jquery:
-    { version: X.X.XX,
-      source: 'url',
+  { client: [
+    { name: 'jquery', 
+      found: true, 
+      version: null, 
+      src: 'example.com'
     },
-    backbone: {
-      version: X.X.XX,
-      source: 'url',
-    },
-    express: {
-      certainty: /** 0-1 */,
-    },
+    { name: 'backbone',
+      found: true,
+      version: null,
+      src: 'example.com',
+    }],
+    server: [
+    { name: 'node',
+      { certainty: 0.7,
+        version: X.X.XX,
+        misc: {
+          middleware: express,
+        }
+      }
+    }]    
   }  
-```
-
-Error eg:
-```
-  node app.js http://example.com
-
-  /** returned */
-  { error: true,
-    message: "Unable to resolve url"
-  }
 ```
 
 ### Client
@@ -64,16 +71,15 @@ if that technology was found, and if so, the source url and version for that tec
 
 eg:
 ```
-  { backbone:
-    { found: false}
+  { name: 'backbone',
+    found: false,
   } 
 
   /** OR */
-  {  react:
-    { found: true,
-      version: X.X.XX,
-      source: cdnjs.com/foo/bar/react.min.js,
-    }
+  { name: 'react',
+    found: true,
+    version: X.X.XX,
+    source: cdnjs.com/foo/bar/react.min.js,
   }
 ```
 
@@ -89,20 +95,18 @@ information dependent on the technology.
 
 eg:
 ``` 
-  { rails:
-    { certainty: 0.1,
-      version: null
-    }
+  { name: 'rails',
+    certainty: 0.1,
+    version: null
   }
 
   /** OR */
   
-  { node:
-    { certainty: 0.7,
-      version: X.X.XX,
-      misc: {
-        middleware: express,
-      }
+  { name: 'node',
+    certainty: 0.7,
+    version: X.X.XX,
+    misc: {
+      middleware: express,
     }
   }
 ```

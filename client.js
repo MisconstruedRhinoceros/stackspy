@@ -6,7 +6,7 @@ var CLIENT_MODULES = __dirname + '/modules/client/';
 /**
  * Load up all of the client side modules here
  */
-var modules = ['jquery'];
+var modules = ['jquery', 'react'];
 var guesses = {};
 
 for(var i = 0; i < modules.length; i++) {
@@ -28,7 +28,14 @@ for(var i = 0; i < modules.length; i++) {
  * intelligently passes them on
  */
 module.exports = function(response) {
+  var results = [];
+
   for(var key in guesses) {
-    guesses[key](response);
+    var result = guesses[key](response);
+    if(result.found === true) {
+      results.push(result);
+    }
   }
+
+  return results;
 }
